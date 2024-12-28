@@ -1,3 +1,4 @@
+
 https://github.com/SWgil/JinSang/tree/JINSU_Branch
 
 Jinsu의 readme입니다.
@@ -13,3 +14,9 @@ c#프로그래밍 강좌사이트 https://www.csharpstudy.com/
 2.이후 가능한한 rebase환경(conflict 되지않도록)
 3.jinsu-branch 에서 작업한것 업로드(pull)
 4.서로 approve 받은 이후 마스터로 PR(pull request)
+
+Jinsu의 readme입니다.
+ToyProject로 도미노 진행할 예정.
+241228기준 첫주는 공부과정
+2~4주 동안 toyproject 진행할 예정.
+
