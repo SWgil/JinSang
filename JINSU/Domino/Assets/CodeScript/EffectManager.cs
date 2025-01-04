@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class EffectManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //TODO
+    //Effect를 관리하는 Manager 코드 추가
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

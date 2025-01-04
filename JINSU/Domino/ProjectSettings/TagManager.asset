@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - UnseeingBall
-  - DominoBlock
+  - Tag_InvisibleBall
+  - Tag_DominoBlock
+  - Tag_MapPlane
   layers:
   - Default
   - TransparentFX

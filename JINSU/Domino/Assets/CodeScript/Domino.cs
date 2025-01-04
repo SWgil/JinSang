@@ -3,15 +3,31 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Domino : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private bool isCollision = false;
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
+    }
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if (collisionInfo.gameObject.CompareTag("Tag_InvisibleBall"))
+        {
+            Debug.Log(string.Format("{0} and {1} is collision Enter ", gameObject.name, collisionInfo.gameObject.name));
+            isCollision = true;
+        }
+        else if (collisionInfo.gameObject.CompareTag("Tag_DominoBlock"))
+        {
+            Debug.Log(string.Format("{0} and {1} is collision Enter", gameObject.name, collisionInfo.gameObject.name));
+            isCollision = true;
+        }
+        else
+            isCollision = false;
     }
 }

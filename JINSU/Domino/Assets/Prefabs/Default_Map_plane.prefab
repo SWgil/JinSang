@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2713459160160352000}
   m_Layer: 0
   m_Name: Default_Map_plane
-  m_TagString: Untagged
+  m_TagString: Tag_MapPlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

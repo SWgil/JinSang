@@ -5,37 +5,37 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-//CourtineÀÇ °æ¿ì´Â Á¢±ÙÁ¦ÇÑÀÚ (prviate,public,protected¸¦ »ç¿ëÇÏÁö¾ÊÀ½)
+//Courtineì˜ ê²½ìš°ëŠ” ì ‘ê·¼ì œí•œì (prviate,public,protectedë¥¼ ì‚¬ìš©í•˜ì§€ì•ŠìŒ)
 
 public class GameManager : MonoBehaviour
 {
-    //¿ÜºÎ ÄÚµå ¿¡¼­ ½Ì±ÛÅæ °´Ã¼ Á¢±Ù¿ëµµ
+    //ì™¸ë¶€ ì½”ë“œ ì—ì„œ ì‹±ê¸€í†¤ ê°ì²´ ì ‘ê·¼ìš©ë„
     public static GameManager Instance;
 
     /// <summary>
-    /// °ÔÀÓ ÆÇÁ¤+À¯Àú »óÅÂ¿ë º¯¼ö
+    /// ê²Œì„ íŒì •+ìœ ì € ìƒíƒœìš© ë³€ìˆ˜
     /// </summary>
-    public bool isGameOn = true; //°ÔÀÓ ½ÇÇà¿©ºÎ
-    public bool isGamePlaying = false;  //ÁøÇà¿©ºÎ(ÀÏ½ÃÁ¤Áö)
-    public bool isGameOver = false;     //½ÂÆĞ
-    private int score = 0;          //ÃÖ´Ü°¹¼ö ÆÇÁ¤¿ë
-    private int dominoCount = 0;    //»ç¿ëÇÑ µµ¹Ì³ë°¹¼ö
+    public bool isGameOn = true; //ê²Œì„ ì‹¤í–‰ì—¬ë¶€
+    public bool isGamePlaying = false;  //ì§„í–‰ì—¬ë¶€(ì¼ì‹œì •ì§€)
+    public bool isGameOver = false;     //ìŠ¹íŒ¨
+    private int score = 0;          //ìµœë‹¨ê°¯ìˆ˜ íŒì •ìš©
+    private int dominoCount = 0;    //ì‚¬ìš©í•œ ë„ë¯¸ë…¸ê°¯ìˆ˜
 
     /// <summary>
-    /// ÇØ´ç ¾À¿¡ ÇÏ³ª´Â ²À ÇÊ¿äÇÔ.
+    /// í•´ë‹¹ ì”¬ì— í•˜ë‚˜ëŠ” ê¼­ í•„ìš”í•¨.
     /// </summary>
-    public GameObject invisibleBall; 
-    public GameObject firstDomino; 
+    public GameObject invisibleBall;
+    public GameObject firstDomino;
     public GameObject lastDomino;
 
     /// <summary>
-    /// UI¿ë º¯¼ö
+    /// UIìš© ë³€ìˆ˜
     /// </summary>
     public Text timeText;
     public Text recordText;
     private float surviveTime;
     public Text scoreText = null;
-    public GameObject gameOverUI; //°ÔÀÓ ¿À¹ö½Ã È°¼ºÈ­ÇÒ UI°ÔÀÓ ¿ÀºêÁ§Æ®. //³¡³µÀ» °æ¿ì ½ºÄÚ¾îÅØ½ºÆ®·Î "END"Ãâ·Â ¿¹Á¤
+    public GameObject gameOverUI; //ê²Œì„ ì˜¤ë²„ì‹œ í™œì„±í™”í•  UIê²Œì„ ì˜¤ë¸Œì íŠ¸. //ëë‚¬ì„ ê²½ìš° ìŠ¤ì½”ì–´í…ìŠ¤íŠ¸ë¡œ "END"ì¶œë ¥ ì˜ˆì •
 
 
     void Awake()
@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("¾À¿¡ °ÔÀÓ¸Å´ÏÀú°¡ µÎ°³ÀÔ´Ï´Ù.");
-            Destroy(gameObject); //ÀÚ½ÅÀÇ °ÔÀÓ¿ÀºêÁ§Æ®, ¿©±â¼­´Â Game_Manager Å¬·¡½º(È¤Àº ÀÎ½ºÅÏ½º)¸¦ ÀÇ¹Ì
+            Debug.Log("ì”¬ì— ê²Œì„ë§¤ë‹ˆì €ê°€ ë‘ê°œì…ë‹ˆë‹¤.");
+            Destroy(gameObject); //ìì‹ ì˜ ê²Œì„ì˜¤ë¸Œì íŠ¸, ì—¬ê¸°ì„œëŠ” Game_Manager í´ë˜ìŠ¤(í˜¹ì€ ì¸ìŠ¤í„´ìŠ¤)ë¥¼ ì˜ë¯¸
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,44 +64,45 @@ public class GameManager : MonoBehaviour
     {
         isGamePlaying = pauseStatus;
 
-        if (isGamePlaying == true )
+        if (isGamePlaying == true)
         {
-            // LoadMenuScene or LoadOptionScene
+
+            // TODO : ì¼ì‹œì •ì§€ ìƒíƒœì—ì„œ ì–´ë–¤ í™”ë©´ì„ ë„ìš¸ì§€ UIíŒŒíŠ¸ì—ì„œ ê²°ì •
+            // ë©”ë‰´ì”¬ì„ ë¶ˆëŸ¬ì˜¬ê²ƒì¸ì§€ ê²Œì„ì”¬ ìœ„ì— ì˜µì…˜ ì°½ì„ ë„ìš¸ê²ƒì¸ì§€ ex (LoadMenuScene or LoadOptionScene)
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //°ÔÀÓ¿À¹ö°¡ µÇ¾ú°í, ½ºÆäÀÌ½º¹Ù¸¦ ´©¸£¸é È°¼ºÈ­µÈ ¾ÀÀ» ´Ù½Ã ºÒ·¯¿Â´Ù. --> ½ºÅ×ÀÌÁö Àç½ÃÀÛ
-        if (isGameOver == true && Input.GetKeyDown(KeyCode.Space)) 
+        //ê²Œì„ì˜¤ë²„ê°€ ë˜ì—ˆê³ , ìŠ¤í˜ì´ìŠ¤ë°”ë¥¼ ëˆ„ë¥´ë©´ í™œì„±í™”ëœ ì”¬ì„ ë‹¤ì‹œ ë¶ˆëŸ¬ì˜¨ë‹¤. --> ìŠ¤í…Œì´ì§€ ì¬ì‹œì‘
+        if (isGameOver == true && Input.GetKeyDown(KeyCode.Space))
         {
-               SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
 
-        //°ÔÀÓ Áß´Ü
-
+        //ê²Œì„ ì¤‘ë‹¨
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SetPause();
         }
-        //°ÔÀÓÁ¾·á
+
+        //ê²Œì„ì¢…ë£Œ
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Application.Quit(); //À¯´ÏÆ¼ ¿¡µğÅÍ¿¡¼­´Â ¹«½ÃµÊ.
-            UnityEditor.EditorApplication.isPlaying = false; //¿¡µğÅÍ¿¡¼­ ÇØ´ç ¿ªÇÒ ´ëÃ¼, ¿¡µğÅÍ¿¡¼­ ÇÃ·¹ÀÌ->Á¤ÁöµÊ.
+            Application.Quit(); //ìœ ë‹ˆí‹° ì—ë””í„°ì—ì„œëŠ” ë¬´ì‹œë¨.
+            UnityEditor.EditorApplication.isPlaying = false; //ì—ë””í„°ì—ì„œ í•´ë‹¹ ì—­í•  ëŒ€ì²´, ì—ë””í„°ì—ì„œ í”Œë ˆì´->ì •ì§€ë¨.
         }
 
         //TODO
-        //0.¸Ş´º¸¦ ±âÁØÀ¸·Î, °ÔÀÓÀ» ½ÃÀÛÇß´ÂÁö ¾ÈÇß´ÂÁö(Æ¯Á¤ ¾ÀÀÌ ·Îµå ‰ç´ÂÁö ¾È‰ç´ÂÁö È®ÀÎ)
+        //0.ë©”ë‰´ë¥¼ ê¸°ì¤€ìœ¼ë¡œ, ê²Œì„ì„ ì‹œì‘í–ˆëŠ”ì§€ ì•ˆí–ˆëŠ”ì§€(íŠ¹ì • ì”¬ì´ ë¡œë“œ ë¬ëŠ”ì§€ ì•ˆë¬ëŠ”ì§€ í™•ì¸)
 
-        //1.ObjectManager¿¡¼­ µµ¹Ì³ëÀÇ °¹¼ö¸¦ °¡Á®¿Í¾ßÇÔ.
-        //1-1.Ã³À½ µµ¹Ì³ë, ³¡µµ¹Ì³ë°¡ ´Ù ¾²·¯Á³´Ù¸é °ÔÀÓÆÇÁ¤
+        //1.ObjectManagerì—ì„œ ë„ë¯¸ë…¸ì˜ ê°¯ìˆ˜ë¥¼ ê°€ì ¸ì™€ì•¼í•¨.
+        //1-1.ì²˜ìŒ ë„ë¯¸ë…¸, ëë„ë¯¸ë…¸ê°€ ë‹¤ ì“°ëŸ¬ì¡Œë‹¤ë©´ ê²Œì„íŒì •
 
-        //2.À¯ÀúÀÇ ÀÔ·Â Ã³¸®(µµ¹Ì³ë»ı¼º+¸Ş´º,¾ÀÀüÈ¯ µî)
-        //2-1.°ÔÀÓ Á¾·á,¸Ş´ºÈ­¸é(È¤Àº ¿É¼Ç) È°¼ºÈ­´Â ±¸Çö.
-        //2-2.UI ±¸¼º¿¡ µû¶ó º¯°æ °¡´É¼º ¸Å¿ì ¸¹À½.
+        //2.ìœ ì €ì˜ ì…ë ¥ ì²˜ë¦¬(ë„ë¯¸ë…¸ìƒì„±+ë©”ë‰´,ì”¬ì „í™˜ ë“±)
+        //2-1.ê²Œì„ ì¢…ë£Œ,ë©”ë‰´í™”ë©´(í˜¹ì€ ì˜µì…˜) í™œì„±í™”ëŠ” êµ¬í˜„.
+        //2-2.UI êµ¬ì„±ì— ë”°ë¼ ë³€ê²½ ê°€ëŠ¥ì„± ë§¤ìš° ë§ìŒ.
 
     }
 

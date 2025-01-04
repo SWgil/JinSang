@@ -5,22 +5,19 @@ using UnityEngine;
 public class ChasingCamera : MonoBehaviour
 {
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+
     }
 
-    //ÇöÀç´Â °ÔÀÓÈ­¸éÀ» ÀÔ·ÂÃ³¸®ÇØ¼­ ÇÁ¸®ÇÏ°Ô º¼¼öÀÖ´Â Ä«¸Ş¶ó Å×½ºÆ®
-
-    // Update is called once per frame
+    //í˜„ì¬ëŠ” ê²Œì„í™”ë©´ì„ ì…ë ¥ì²˜ë¦¬í•´ì„œ í”„ë¦¬í•˜ê²Œ ë³¼ìˆ˜ìˆëŠ” ì¹´ë©”ë¼ í…ŒìŠ¤íŠ¸
     void Update()
     {
         MoveCamera();
 
     }
 
-// for testing
+    // for testing
     private void MoveCamera()
     {
         float moveZ = 0f;
@@ -50,10 +47,11 @@ public class ChasingCamera : MonoBehaviour
 
 
 
-    /*
+    /* 
+    TODO ì“°ëŸ¬ì§€ëŠ” ë„ë¯¸ë…¸ë¥¼ ì¶”ì í•˜ê²Œë” í•´ì•¼í•¨.
+    
     private void Update() {
-    // °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ¿ŞÂÊÀ¸·Î ÀÏÁ¤ ¼Óµµ·Î ÆòÇà ÀÌµ¿ÇÏ´Â Ã³¸®
-    //¾²·¯Áö´Â µµ¹Ì³ë¸¦ ÃßÀûÇÏ°Ô²û ÇØ¾ßÇÔ.
+   
     if(!GameManager.instance.isGameover)
         transform.Translate(Vector3.left*speed *Time.deltaTime);
     }
