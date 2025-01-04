@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7198320127131781249}
   m_Layer: 0
   m_Name: Default_Domino_block
-  m_TagString: DominoBlock
+  m_TagString: Tag_DominoBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

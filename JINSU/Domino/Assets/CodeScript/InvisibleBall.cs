@@ -4,31 +4,30 @@ public class InvisibleBall : MonoBehaviour
 {
     public float damage = 20.0f;
     public float speed = 1.2f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKey(KeyCode.K))
         {
-            GetComponent<Rigidbody>().AddForce(speed * -1,0, 0,ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(speed * -1, 0, 0, ForceMode.Impulse);
         }
+
     }
 
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        if (collisionInfo.gameObject.CompareTag("DominoBlock"))
+        if (collisionInfo.gameObject.CompareTag("Tag_DominoBlock"))
         {
-            Debug.Log(string.Format("{0} ¿ÀºêÁ§Æ®°¡ {1} ¿Í Ãæµ¹Çß½À´Ï´Ù.", gameObject.name, collisionInfo.gameObject.name));
+            Debug.Log(string.Format("{0} and {1} is Collsion Enter ", gameObject.name, collisionInfo.gameObject.name));
             Destroy(gameObject);
         }
 
-        //°ø°ú µµ¹Ì³ë°¡ Ãæµ¹Ã³¸®´Â µÆÁö¸¸, µµ¹Ì³ëµéÀÌ ¿ìÁÖ À¯¿µÇÏµí µÕµÕ ¶°´Ù´Ï´Â°Ô ¹®Á¦ÀÓ.
+        //ê³µê³¼ ë„ë¯¸ë…¸ê°€ ì¶©ëŒì²˜ë¦¬ëŠ” ëì§€ë§Œ, ë„ë¯¸ë…¸ë“¤ì´ ìš°ì£¼ ìœ ì˜í•˜ë“¯ ë‘¥ë‘¥ ë– ë‹¤ë‹ˆëŠ”ê²Œ ë¬¸ì œì„. 
     }
 
 }
