@@ -173,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570824329}
   - component: {fileID: 570824330}
+  - component: {fileID: 570824331}
   m_Layer: 0
   m_Name: ObjectManager
   m_TagString: Untagged
@@ -205,6 +206,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20081eb4466d4a04aa719acd90820f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs: []
+--- !u!114 &570824331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570824328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d22865e5bd02842a776f04030dbea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &611461310
@@ -264,67 +278,6 @@ MonoBehaviour:
   recordText: {fileID: 0}
   scoreText: {fileID: 0}
   gameOverUI: {fileID: 0}
---- !u!1001 &702532205
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4905809482892811929, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_Name
-      value: Default_Domino_block (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4905809482892811929, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_TagString
-      value: Tag_InvisibleBall
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
 --- !u!1 &962278261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4905809482892811929, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
@@ -343,9 +296,10 @@ GameObject:
   - component: {fileID: 1042714153}
   - component: {fileID: 1042714152}
   - component: {fileID: 1042714156}
+  - component: {fileID: 1042714157}
   m_Layer: 0
   m_Name: Chasing_Domino
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,6 +434,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139aaf9ac4038454abb902e3ea969992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1042714157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042714151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &1408540712
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,67 +752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e362eaddc0974b4418accbbb177e12e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1835619312
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.6138344
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.24602413
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528486515417933391, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4905809482892811929, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_Name
-      value: Default_Domino_block
-      objectReference: {fileID: 0}
-    - target: {fileID: 4905809482892811929, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
-      propertyPath: m_TagString
-      value: Tag_InvisibleBall
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
 --- !u!1001 &5733259356595264867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -893,11 +802,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8408605008987437987, guid: c2106ceff2738a8478b861f302a03a75, type: 3}
       propertyPath: m_Name
-      value: Ball
+      value: InvisibleBall
       objectReference: {fileID: 0}
     - target: {fileID: 8408605008987437987, guid: c2106ceff2738a8478b861f302a03a75, type: 3}
       propertyPath: m_TagString
-      value: Tag_DominoBlock
+      value: Tag_InvisibleBall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -958,7 +867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4905809482892811929, guid: e0f663978cafccc4f871a52c92c03e53, type: 3}
       propertyPath: m_TagString
-      value: Tag_InvisibleBall
+      value: Tag_DominoBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1018,8 +927,16 @@ PrefabInstance:
       value: Plane
       objectReference: {fileID: 0}
     - target: {fileID: 5401438867961817375, guid: 41ceb918936633a4a9bd0a91aa717b2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401438867961817375, guid: 41ceb918936633a4a9bd0a91aa717b2f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401438867961817375, guid: 41ceb918936633a4a9bd0a91aa717b2f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Tag_MapPlane
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1037,5 +954,3 @@ SceneRoots:
   - {fileID: 611461311}
   - {fileID: 5733259356595264867}
   - {fileID: 7301320214654052837}
-  - {fileID: 1835619312}
-  - {fileID: 702532205}
