@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); //자신의 게임오브젝트, 여기서는 Game_Manager 클래스(혹은 인스턴스)를 의미
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
@@ -67,7 +66,6 @@ public class GameManager : MonoBehaviour
 
         if (isGamePlaying == true)
         {
-
             // TODO : 일시정지 상태에서 어떤 화면을 띄울지 UI파트에서 결정
             // 메뉴씬을 불러올것인지 게임씬 위에 옵션 창을 띄울것인지 ex (LoadMenuScene or LoadOptionScene)
         }
@@ -76,10 +74,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        surviveTime +=Time.deltaTime;
+        surviveTime += Time.deltaTime;
 
         //게임오버가 되었고, 스페이스바를 누르면 활성화된 씬을 다시 불러온다. --> 스테이지 재시작
-        // if (isGameOver == true && Input.GetKeyDown(KeyCode.Space))
+        // if (isGameOver == true && Input.GetKeyDown(KeyCode.Space)) //게임오버판정이 없기때문에, 테스트단계에선 미뤄둠.
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -145,12 +143,12 @@ public class GameManager : MonoBehaviour
     //1.클리어한 스테이지번호.
     //1-1.클리어한 스테이지정보 :  클리어한 시간+도미노 사용갯수.
     //2.총 플레이,클리어시간계산
-    
+
     public void Save()
     {
 
         //PlayerPrefs.SetString("StageNumber", SceneManager.GetActiveScene()); //스테이지번호
-        
+
         //"시간" + SetTime((int)surviveTime); 분:초 형태
         PlayerPrefs.SetFloat("ClearTime", surviveTime); //클리어시간
         PlayerPrefs.SetInt("DominoCount", dominoCount); //도미노사용갯수
@@ -159,11 +157,11 @@ public class GameManager : MonoBehaviour
 
     string SetTime(int t)
     {
-        string min = (t/60).ToString();
-        if(int.Parse(min)<10) min = "0"+min;
-        string sec = (t%60).ToString();
-        if(int.Parse(sec)<10) sec = "0"+sec;
-        return min+":"+sec;
+        string min = (t / 60).ToString();
+        if (int.Parse(min) < 10) min = "0" + min;
+        string sec = (t % 60).ToString();
+        if (int.Parse(sec) < 10) sec = "0" + sec;
+        return min + ":" + sec;
     }
 
     //DB에서 Game으로 데이터 Load
