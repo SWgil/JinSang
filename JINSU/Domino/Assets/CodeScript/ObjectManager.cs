@@ -6,7 +6,7 @@ public class ObjectManager : MonoBehaviour
 {
     private static ObjectManager instance;
     public List<GameObject> prefabs = new List<GameObject>();    //객체들의 원본프리팹
-    private Dictionary<string, GameObject> objectPool = 
+    private Dictionary<string, GameObject> objectPool =
     new Dictionary<string, GameObject>(); //실제 인스턴스들
 
 
@@ -41,14 +41,14 @@ public class ObjectManager : MonoBehaviour
     }
     public void MemoryDelete()
     {
-        if(instance == null)
-            return; 
+        if (instance == null)
+            return;
         foreach (KeyValuePair<string, GameObject> obj in objectPool)
         {
             Destroy(obj.Value);
         }
         objectPool.Clear();
-        objectPool=null;
+        objectPool = null;
     }
     void OnDestroy()
     {
@@ -69,7 +69,7 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    //UnUsed Code
+    //생성된 오브젝트를 이동+배치해야할때
     public GameObject MoveObject(string objName, Vector3 pos, Quaternion rot)
     {
         if (objectPool.ContainsKey(objName))
@@ -104,21 +104,21 @@ public class ObjectManager : MonoBehaviour
         return null;
     }
     public GameObject GetPrefabs(string name)
-{
-    if (prefabs.Count > 0)
     {
-        foreach (GameObject obj in prefabs)
+        if (prefabs.Count > 0)
         {
-            if(obj==null)
-                continue;
-            else if (obj.name == name)
+            foreach (GameObject obj in prefabs)
             {
-                return obj;
+                if (obj == null)
+                    continue;
+                else if (obj.name == name)
+                {
+                    return obj;
+                }
             }
         }
+        return null;
     }
-    return null;
-}
     public void UnregisterObject(string name)
     {
         if (objectPool.ContainsKey(name))

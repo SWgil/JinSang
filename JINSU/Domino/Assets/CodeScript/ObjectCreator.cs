@@ -14,7 +14,6 @@ public class ObjectCreator : MonoBehaviour
 
     //대신에 따로 분리하게된다면 씬의 특성에 맞는 ObjectCreator를 만들어야한다는 데요?
     private int selectedPrefabIndex = 0;
-    float fixedY;
 
     void Awake()
     {
@@ -23,11 +22,9 @@ public class ObjectCreator : MonoBehaviour
         {
             Debug.LogError("ObjectManager instance is not found.");
         }
-       
-        fixedY = transform.position.y;
-        objectManager.prefabs.Add(CreateObjectWithPrefabs("Default_Invisible_ball", "InvisibleBall"));
-        objectManager.prefabs.Add(CreateObjectWithPrefabs("Default_Domino_block", "Domino"));
-        // objectManager.prefabs.Add( CreateObjectWithPrefabs("Default_Map_plane", "Plane"));
+        objectManager.prefabs.Add(LoadPrefabs("Default_Invisible_ball", "InvisibleBall"));
+        objectManager.prefabs.Add(LoadPrefabs("Default_Domino_block", "Domino"));
+        objectManager.prefabs.Add(LoadPrefabs("Default_Map_plane", "Plane"));
 
         DontDestroyOnLoad(gameObject);
 
@@ -35,50 +32,47 @@ public class ObjectCreator : MonoBehaviour
 
     void OnDestory()
     {
-        int k = 0;
+
     }
     //TODO
-    //ObjectManager의 Prefabs에 등록.
-    //Layer에는 등록이안되는?
-    private GameObject CreateObjectWithPrefabs(string prefabsName, string objName)
+    //Prefab의 Layer에는 등록이안되는? -> 이후 도미노와 벽간의 충돌시 문제발생 가능성
+    private GameObject LoadPrefabs(string prefabsName, string objName)
     {
-        GameObject obj = Instantiate((GameObject)Resources.Load("Prefabs/" + prefabsName), new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject obj = (GameObject)Resources.Load("Prefabs/" + prefabsName);
         obj.name = objName;
         objectManager.RegisterObject(obj, obj.name);
         return objectManager.GetObject(obj.name);
     }
-  
-    private void CreateObjectAtMousePosition()
+    private GameObject CreateObject(string prefabsName, string objName, Vector3 position, Quaternion rotation)
+    {
+        if (position == null)
+        {
+            position = new Vector3(0, 0, 0);
+        }
+        if (rotation == null)
+        {
+            rotation = Quaternion.identity;
+        }
+        GameObject newObject = Instantiate(objectManager.GetPrefabs(objName), position, rotation);
+        newObject.transform.parent = objectManager.transform;
+        objectManager.RegisterObject(newObject, objName);
+        return newObject;
+    }
+
+    private void CreateObjectAtMousePosition(string objName)
     {
 
-          Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                GameObject newObject = Instantiate(objectManager.GetPrefabs("Domino"), new Vector3(hit.point.x,hit.point.y+0.75f,hit.point.z), Quaternion.identity);
-                newObject.transform.parent = objectManager.transform;
-                objectManager.RegisterObject(newObject,"Domino");
-            }
+        if (Physics.Raycast(ray, out hit))
+        {
+            GameObject newObject = Instantiate(objectManager.GetPrefabs(objName), new Vector3(hit.point.x, hit.point.y + 0.75f, hit.point.z), Quaternion.identity);
+            newObject.transform.parent = objectManager.transform;
+            objectManager.RegisterObject(newObject, objName);
+        }
 
-        // Vector3 mousePosition = Input.mousePosition;
-        // mousePosition.z = 10;
-        // Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        // RaycastHit hit;
-        // if (Physics.Raycast(ray, out hit))
-        // {
-        //     Vector3 worldPosition = hit.point;
-        //     // worldPosition.z = 10;  //여기 분명히 꼬일거임. //자동완성 코드인데 뭔소리임? worldPosition.z = hit.point.z; 로 수정해야함.
-        //     GameObject obj = objectManager.MoveObject("Domino", worldPosition, Quaternion.identity);
-        //     //GameObject obj = objectManager.MoveObject(objPrefabs[selectedPrefabIndex], worldPosition, Quaternion.identity);
-        //     //int objectId = objectManager.Instanace.RegisterObject(obj.name);
-
-        //     obj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // }
     }
     //UI를 통해 선택된 프리팹을 설정
     public void SelectPrefab(int index)
@@ -88,28 +82,22 @@ public class ObjectCreator : MonoBehaviour
             selectedPrefabIndex = index;
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) //선택으로 생성 -->동작하는중
+        if (Input.GetMouseButtonDown(0)) //왼클릭으로 생성 -->동작하는중
         {
-         //   CreateObjectAtMousePosition();
+            // CreateObjectAtMousePosition("Domino");
         }
-        /*
-        if (Input.GetMouseButton(0) && selectedObject != null) //드래깅
+
+        if (Input.GetMouseButtonDown(1)) //우클릭으로 생성 -->동작하는중
         {
-            //     DragObject();
+            CreateObjectAtMousePosition("InvisibleBall");
         }
-        if (Input.GetMouseButtonUp(0) && selectedObject != null)  //선택해제
-        {
-            //     DeselectObject();
-        }
-        */
+
     }
 }
