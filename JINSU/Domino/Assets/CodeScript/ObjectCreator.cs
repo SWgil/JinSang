@@ -91,7 +91,7 @@ public class ObjectCreator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) //왼클릭으로 생성 -->동작하는중
         {
-            // CreateObjectAtMousePosition("Domino");
+            CreateObjectAtMousePosition("Domino");
         }
 
         if (Input.GetMouseButtonDown(1)) //우클릭으로 생성 -->동작하는중
