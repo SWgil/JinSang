@@ -1,13 +1,11 @@
-using System.Resources;
 using UnityEngine;
-using UnityEngine.UIElements;
 
+//chore : 디버그용 카메라입니다.
 
-public class ChasingCamera : MonoBehaviour
+public class MainCamera : MonoBehaviour
 {
 
-    float rotX = 0;
-    float rotY = 0;
+    float rotX, rotY = 0;
     void Start()
     {
 
@@ -15,9 +13,10 @@ public class ChasingCamera : MonoBehaviour
 
     void Update()
     {
-        MoveCamera();
-        RotateCamera();
+        // MoveCamera();
+        // RotateCamera();
     }
+
 
     private void MoveCamera()
     {
@@ -76,14 +75,4 @@ public class ChasingCamera : MonoBehaviour
         this.transform.localEulerAngles = new Vector3(-rotY, rotX, 0);
 
     }
-    /* 
-    TODO 쓰러지는 도미노를 추적하게끔 해야함.
-    
-    private void Update() {
-   
-    if(!GameManager.instance.isGameover)
-        transform.Translate(Vector3.left*speed *Time.deltaTime);
-    }
-    */
-
 }
