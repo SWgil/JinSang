@@ -5,12 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/SelectMapScene.unity
+    guid: b7e535630d8d62c42b4d5773c3a049de
+  - enabled: 0
     path: Assets/Scenes/Jins Domino.unity
     guid: 9763bc341d2c33342bbaf31298e94ee4
+  - enabled: 1
+    path: Assets/Scenes/TopViewMapScene.unity
+    guid: a0053a3f190433c40ba59f58652e44f7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 533684a159324714d9a065ca7e3d84db, type: 3}
   m_UseUCBPForAssetBundles: 0
