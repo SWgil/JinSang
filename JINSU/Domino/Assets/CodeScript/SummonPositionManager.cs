@@ -1,15 +1,30 @@
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SummonPositionManager : MonoBehaviour
 {
     public LayerMask layerMask;
-    public GameObject gameObject;
+    public GameObject prefab;
 
     public bool fixedX = false;
     public bool fixedY = false;
     public bool fixedZ = false;
 
+    void Start()
+    {
+        appendPrefab();
+    }
+
+    private void appendPrefab()
+    {
+        GameObject newObject = Instantiate(prefab, transform.position, transform.rotation);
+
+        Destroy(newObject.GetComponent<Rigidbody>());
+        newObject.GetComponent<BoxCollider>().isTrigger = true;
+
+        newObject.transform.SetParent(this.transform);
+    }
 
     void Update()
     {
@@ -51,6 +66,7 @@ public class SummonPositionManager : MonoBehaviour
 
     private void SummonObject()
     {
-        Instantiate(gameObject, transform.position, transform.rotation);
+        Instantiate(prefab, transform.position, transform.rotation);
     }
+
 }
