@@ -30,7 +30,7 @@ public class SummonPositionManager : MonoBehaviour
     {
         UpdatePosition();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isMousePointingWall())
         {
             SummonObject();
         }
@@ -69,4 +69,9 @@ public class SummonPositionManager : MonoBehaviour
         Instantiate(prefab, transform.position, transform.rotation);
     }
 
+    private bool isMousePointingWall()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        return Physics.Raycast(ray, Mathf.Infinity, layerMask);
+    }
 }
