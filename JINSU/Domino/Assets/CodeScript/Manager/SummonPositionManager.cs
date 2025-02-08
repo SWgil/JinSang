@@ -68,7 +68,7 @@ public class SummonPositionManager : MonoBehaviour
 
     private GameObject SummonObject()
     {
-        return Instantiate(prefab, transform.position, transform.rotation);
+        return ObjectManager.Call.RegisterObject(prefab, transform.position, transform.rotation, prefab.name);
     }
 
     private bool isMousePointingWall()
