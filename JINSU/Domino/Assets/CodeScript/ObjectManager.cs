@@ -8,7 +8,8 @@ public class ObjectManager : MonoBehaviour
     public List<GameObject> prefabs = new List<GameObject>();    //객체들의 원본프리팹
     private Dictionary<string, GameObject> objectPool =
     new Dictionary<string, GameObject>(); //실제 인스턴스들
-
+    // TODO: 이름별로 cnt 관리 필요
+    int cnt = 0;
 
     public static ObjectManager Call
     {
@@ -60,41 +61,29 @@ public class ObjectManager : MonoBehaviour
     {
         if (!objectPool.ContainsKey(name))
         {
-            GameObject clone = Instantiate(obj) as GameObject;
-            clone.transform.name = name;
-            clone.transform.localPosition = Vector3.zero;
-            clone.SetActive(false);
-            clone.transform.parent = transform;
-            objectPool.Add(name, obj);
+            RegisterObject(obj, Vector3.zero, Quaternion.identity, name);
         }
     }
 
-    //생성된 오브젝트를 이동+배치해야할때
-    public GameObject MoveObject(string objName, Vector3 pos, Quaternion rot)
+    public GameObject RegisterObject(GameObject obj, Vector3 position, Quaternion rotation, string name)
     {
-        if (objectPool.ContainsKey(objName))
+        if (objectPool.ContainsKey(name))
         {
-
-            if (pos == null)
-            {
-                pos = Vector3.zero;
-            }
-            else
-            {
-                objectPool[objName].transform.position = pos;
-            }
-
-            if (rot == null)
-            {
-                rot = Quaternion.identity;
-            }
-            else
-            {
-                objectPool[objName].transform.rotation = rot;
-            }
+            cnt++;
+            name = name + cnt;
         }
-        return objectPool[objName];
+
+        GameObject gameObject = Instantiate(obj, position, rotation);
+        gameObject.transform.name = name;
+        gameObject.transform.position = position;
+        gameObject.transform.rotation = rotation;
+        gameObject.transform.parent = transform;
+
+        objectPool.Add(name, gameObject);
+
+        return gameObject;
     }
+
     public GameObject GetObject(string name)
     {
         if (objectPool.ContainsKey(name))
@@ -103,6 +92,7 @@ public class ObjectManager : MonoBehaviour
         }
         return null;
     }
+
     public GameObject GetPrefabs(string name)
     {
         if (prefabs.Count > 0)
@@ -123,6 +113,7 @@ public class ObjectManager : MonoBehaviour
         }
         return null;
     }
+
     public void UnregisterObject(string name)
     {
         if (objectPool.ContainsKey(name))
