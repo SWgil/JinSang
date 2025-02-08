@@ -1,41 +1,27 @@
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class SummonPositionManager : MonoBehaviour
+public class SummonPosition : MonoBehaviour
 {
     public LayerMask layerMask;
-    public GameObject prefab;
 
     public bool fixedX = false;
     public bool fixedY = false;
     public bool fixedZ = false;
 
-    void Start()
+    void Update()
     {
-        appendPrefab();
+        UpdatePosition();
     }
 
-    private void appendPrefab()
+
+    public void appendPrefab(GameObject prefab)
     {
         GameObject newObject = Instantiate(prefab, transform.position, transform.rotation);
 
         Destroy(newObject.GetComponent<Rigidbody>());
         newObject.GetComponent<BoxCollider>().isTrigger = true;
 
-        newObject.transform.SetParent(this.transform);
-    }
-
-    void Update()
-    {
-        UpdatePosition();
-
-        if (Input.GetMouseButtonDown(0) && isMousePointingWall())
-        {
-            GameObject domino = SummonObject();
-            DominoManager dm = FindFirstObjectByType<DominoManager>();
-            dm.RegisterObject(domino);
-        }
+        newObject.transform.SetParent(transform);
     }
 
     private void UpdatePosition()
@@ -64,16 +50,5 @@ public class SummonPositionManager : MonoBehaviour
 
             transform.position = nextPostion;
         }
-    }
-
-    private GameObject SummonObject()
-    {
-        return ObjectManager.Call.RegisterObject(prefab, transform.position, transform.rotation, prefab.name);
-    }
-
-    private bool isMousePointingWall()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        return Physics.Raycast(ray, Mathf.Infinity, layerMask);
     }
 }

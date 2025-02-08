@@ -20,8 +20,27 @@ public class DominoManager : MonoBehaviour
 
 
     public GameObject startingDomino;
-    private List<GameObject> dominoes = new List<GameObject>();
     public GameObject dominoPrefab;
+    public LayerMask layerMask;
+
+
+    private List<GameObject> dominoes = new List<GameObject>();
+
+    void Start()
+    {
+        GameObject summonPosition = GetSummonPosition();
+        summonPosition.GetComponent<SummonPosition>().appendPrefab(dominoPrefab);
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && isMousePointingWall())
+        {
+            GameObject domino = SummonObject();
+            DominoManager dm = FindFirstObjectByType<DominoManager>();
+            dm.RegisterObject(domino);
+        }
+    }
 
     public void ActivateStartingDomino()
     {
@@ -47,6 +66,25 @@ public class DominoManager : MonoBehaviour
     public void RemoveAllDominoes()
     {
         ObjectManager.Call.UnregisterAllObject(dominoPrefab.name);
+    }
+
+    private GameObject GetSummonPosition()
+    {
+        Transform childTransform = transform.Find("SummonPosition");
+        return childTransform.gameObject;
+    }
+
+
+    private GameObject SummonObject()
+    {
+        Transform summonPosition = GetSummonPosition().transform;
+        return ObjectManager.Call.RegisterObject(dominoPrefab, summonPosition.position, summonPosition.rotation, dominoPrefab.name);
+    }
+
+    public bool isMousePointingWall()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        return Physics.Raycast(ray, Mathf.Infinity, layerMask);
     }
 }
 

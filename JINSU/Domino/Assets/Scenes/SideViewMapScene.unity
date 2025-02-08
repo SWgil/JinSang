@@ -605,6 +605,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingDomino: {fileID: 4905809483584718935}
   dominoPrefab: {fileID: 4905809482892811929, guid: 7579154d77000214e81337357cf62529, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &882324297
 Transform:
   m_ObjectHideFlags: 0
@@ -617,7 +620,8 @@ Transform:
   m_LocalPosition: {x: 1, y: 3, z: -3.018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2059806391}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &914598949
@@ -1626,7 +1630,7 @@ GameObject:
   - component: {fileID: 2059806391}
   - component: {fileID: 2059806390}
   m_Layer: 0
-  m_Name: DefaultDominoPosition
+  m_Name: SummonPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1647,7 +1651,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  prefab: {fileID: 4905809482892811929, guid: 7579154d77000214e81337357cf62529, type: 3}
   fixedX: 1
   fixedY: 0
   fixedZ: 0
@@ -1659,12 +1662,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059806389}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1, y: 2.346, z: -1.453}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.65400004, z: 1.5649999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 882324297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2082048983
 GameObject:
@@ -2268,7 +2271,6 @@ SceneRoots:
   - {fileID: 1430340662}
   - {fileID: 1665878141}
   - {fileID: 5803323405123983237}
-  - {fileID: 2059806391}
   - {fileID: 2082048987}
   - {fileID: 520642797}
   - {fileID: 914598951}
