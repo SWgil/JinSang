@@ -13,8 +13,8 @@ public class MainCamera : MonoBehaviour
 
     void Update()
     {
-        // MoveCamera();
-        // RotateCamera();
+        MoveCamera();
+        RotateCamera();
     }
 
 
