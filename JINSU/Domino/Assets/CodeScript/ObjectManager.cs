@@ -6,10 +6,8 @@ public class ObjectManager : MonoBehaviour
 {
     private static ObjectManager instance;
     public List<GameObject> prefabs = new List<GameObject>();    //객체들의 원본프리팹
-    private Dictionary<string, GameObject> objectPool =
-    new Dictionary<string, GameObject>(); //실제 인스턴스들
-    // TODO: 이름별로 cnt 관리 필요
-    int cnt = 0;
+    private Dictionary<string, List<GameObject>> objectPool =
+    new Dictionary<string, List<GameObject>>(); //실제 인스턴스들
 
     public static ObjectManager Call
     {
@@ -27,6 +25,7 @@ public class ObjectManager : MonoBehaviour
             return instance;
         }
     }
+
     private void Awake()
     {
         if (instance == null)
@@ -40,17 +39,21 @@ public class ObjectManager : MonoBehaviour
         }
 
     }
+
     public void MemoryDelete()
     {
         if (instance == null)
             return;
-        foreach (KeyValuePair<string, GameObject> obj in objectPool)
+
+        foreach (string key in objectPool.Keys)
         {
-            Destroy(obj.Value);
+            UnregisterAllObject(key);
         }
+
         objectPool.Clear();
         objectPool = null;
     }
+
     void OnDestroy()
     {
         MemoryDelete();
@@ -67,10 +70,15 @@ public class ObjectManager : MonoBehaviour
 
     public GameObject RegisterObject(GameObject obj, Vector3 position, Quaternion rotation, string name)
     {
-        if (objectPool.ContainsKey(name))
+        List<GameObject> objectList;
+        if (!objectPool.ContainsKey(name))
         {
-            cnt++;
-            name = name + cnt;
+            objectList = new List<GameObject>();
+            objectPool.Add(name, objectList);
+        }
+        else
+        {
+            objectList = objectPool[name];
         }
 
         GameObject gameObject = Instantiate(obj, position, rotation);
@@ -79,16 +87,19 @@ public class ObjectManager : MonoBehaviour
         gameObject.transform.rotation = rotation;
         gameObject.transform.parent = transform;
 
-        objectPool.Add(name, gameObject);
+
+        objectList.Add(gameObject);
 
         return gameObject;
     }
 
+    // TODO: 삭제 예정, 추후 한 object들에 대한 컨트롤이 필요할 떄 구현
     public GameObject GetObject(string name)
     {
         if (objectPool.ContainsKey(name))
         {
-            return objectPool[name];
+            // TODO: 임의로 0번째 object를 반환하도록 수정했음, 삭제 필요
+            return objectPool[name][0];
         }
         return null;
     }
@@ -114,17 +125,18 @@ public class ObjectManager : MonoBehaviour
         return null;
     }
 
-    public void UnregisterObject(string name)
+    public void UnregisterAllObject(string name)
     {
         if (objectPool.ContainsKey(name))
         {
+            List<GameObject> objects = objectPool[name];
+            foreach (GameObject obj in objects)
+            {
+                Destroy(obj);
+            }
+
             objectPool.Remove(name);
         }
-    }
-
-    public Dictionary<string, GameObject> GetObjectPool()
-    {
-        return objectPool;
     }
 
     public int GetObjectCount()

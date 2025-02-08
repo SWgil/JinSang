@@ -12,7 +12,8 @@ public class InGameUIManager : MonoBehaviour
 
     public void RestartRound()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        DominoManager dm = FindFirstObjectByType<DominoManager>();
+        dm.RemoveAllDominoes();
     }
 
     public void ResetAllDominoes()

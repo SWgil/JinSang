@@ -21,6 +21,7 @@ public class DominoManager : MonoBehaviour
 
     public GameObject startingDomino;
     private List<GameObject> dominoes = new List<GameObject>();
+    public GameObject dominoPrefab;
 
     public void ActivateStartingDomino()
     {
@@ -41,6 +42,11 @@ public class DominoManager : MonoBehaviour
         {
             domino.GetComponent<ResetableDomino>().Reset();
         }
+    }
+
+    public void RemoveAllDominoes()
+    {
+        ObjectManager.Call.UnregisterAllObject(dominoPrefab.name);
     }
 }
 
