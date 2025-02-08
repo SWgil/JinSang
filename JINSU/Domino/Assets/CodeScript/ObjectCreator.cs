@@ -12,12 +12,16 @@ public class ObjectCreator : MonoBehaviour
     //책임분리와 유연성이 있다고하며, 동적생성의 이점을 상실하는 이유
     //이렇게 등록을 하게되면, 여기에서 실제 프리팹(obj를 인스턴스로 생성)
 
-    //대신에 따로 분리하게된다면 씬의 특성에 맞는 ObjectCreator를 만들어야한다는 데요?
+    //대신에 따로 분리하게된다면 씬의 특성에 맞는 오브젝트마다 ObjectCreator를 만들어야한다는 데요?
+
+
     private int selectedPrefabIndex = 0;
 
     void Awake()
     {
-        objectManager = ObjectManager.Call; //초기에 할당해줘버림.
+        objectManager = ObjectManager.Call; //초기에 오브젝트매니저를 할당.
+
+
         if (objectManager == null)
         {
             Debug.LogError("ObjectManager instance is not found.");
@@ -34,8 +38,7 @@ public class ObjectCreator : MonoBehaviour
     {
 
     }
-    //TODO
-    //Prefab의 Layer에는 등록이안되는? -> 이후 도미노와 벽간의 충돌시 문제발생 가능성
+
     private GameObject LoadPrefabs(string prefabsName, string objName)
     {
         GameObject obj = (GameObject)Resources.Load("Prefabs/" + prefabsName);
@@ -91,7 +94,8 @@ public class ObjectCreator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) //왼클릭으로 생성 -->동작하는중
         {
-            // CreateObjectAtMousePosition("Domino");
+            CreateObjectAtMousePosition("Domino");
+
         }
 
         if (Input.GetMouseButtonDown(1)) //우클릭으로 생성 -->동작하는중
