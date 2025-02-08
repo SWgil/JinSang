@@ -46,6 +46,7 @@ public class ObjectCreator : MonoBehaviour
         objectManager.RegisterObject(obj, obj.name);
         return objectManager.GetObject(obj.name);
     }
+
     private GameObject CreateObject(string prefabsName, string objName, Vector3 position, Quaternion rotation)
     {
         if (position == null)
@@ -77,6 +78,7 @@ public class ObjectCreator : MonoBehaviour
 
 
     }
+
     //UI를 통해 선택된 프리팹을 설정
     public void SelectPrefab(int index)
     {
