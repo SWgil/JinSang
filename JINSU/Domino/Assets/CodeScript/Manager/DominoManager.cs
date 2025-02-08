@@ -23,7 +23,6 @@ public class DominoManager : MonoBehaviour
     public GameObject dominoPrefab;
     public LayerMask layerMask;
 
-
     private List<GameObject> dominoes = new List<GameObject>();
 
     void Start()
@@ -36,7 +35,7 @@ public class DominoManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isMousePointingWall())
         {
-            GameObject domino = SummonObject();
+            GameObject domino = SummonDomino();
             DominoManager dm = FindFirstObjectByType<DominoManager>();
             dm.RegisterObject(domino);
         }
@@ -75,7 +74,7 @@ public class DominoManager : MonoBehaviour
     }
 
 
-    private GameObject SummonObject()
+    private GameObject SummonDomino()
     {
         Transform summonPosition = GetSummonPosition().transform;
         return ObjectManager.Call.RegisterObject(dominoPrefab, summonPosition.position, summonPosition.rotation, dominoPrefab.name);
