@@ -66,6 +66,7 @@ public class Domino : MonoBehaviour
 
     //TODO
     //도미노 블럭 위치를 드래깅.유니티 기본함수. 함수들을 이해못했으므로 이상하게 동작함 -->변경예정.
+
     void OnMouseDown()
     {
         Debug.Log("OnMouseDown");

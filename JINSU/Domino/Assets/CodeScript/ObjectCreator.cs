@@ -13,11 +13,15 @@ public class ObjectCreator : MonoBehaviour
     //이렇게 등록을 하게되면, 여기에서 실제 프리팹(obj를 인스턴스로 생성)
 
     //대신에 따로 분리하게된다면 씬의 특성에 맞는 오브젝트마다 ObjectCreator를 만들어야한다는 데요?
+
+
     private int selectedPrefabIndex = 0;
 
     void Awake()
     {
         objectManager = ObjectManager.Call; //초기에 오브젝트매니저를 할당.
+
+
         if (objectManager == null)
         {
             Debug.LogError("ObjectManager instance is not found.");
@@ -91,6 +95,7 @@ public class ObjectCreator : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) //왼클릭으로 생성 -->동작하는중
         {
             CreateObjectAtMousePosition("Domino");
+
         }
 
         if (Input.GetMouseButtonDown(1)) //우클릭으로 생성 -->동작하는중

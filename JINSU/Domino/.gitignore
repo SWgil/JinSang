@@ -48,6 +48,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+/[Aa]ssets/TextMesh Pro.meta
+/[Aa]ssets/TextMesh Pro/*
+
 
 
 #이하 폴더들은 혹시 모를 빌드환경을 위해서 ignore를 하지않음

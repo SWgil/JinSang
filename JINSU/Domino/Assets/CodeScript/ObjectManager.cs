@@ -110,7 +110,11 @@ public class ObjectManager : MonoBehaviour
             foreach (GameObject obj in prefabs)
             {
                 if (obj == null)
+
+                {
                     continue;
+                }
+
                 else if (obj.name == name)
                 {
                     return obj;
