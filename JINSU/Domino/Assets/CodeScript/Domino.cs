@@ -1,11 +1,8 @@
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
-using System.Collections;
-using System.Collections.Generic;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Domino : MonoBehaviour
@@ -13,14 +10,11 @@ public class Domino : MonoBehaviour
 
     private bool isCollision = false;
     public bool isSelected = false;
-
-    GameObject selectedObject;
     private Rigidbody rb;
 
 
     void Awake()
     {
-        //ver2 mainCameraPos = Camera.main.transform.position;
         rb = GetComponent<Rigidbody>();
     }
 
