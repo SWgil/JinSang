@@ -8,6 +8,11 @@ public class MainCamera : MonoBehaviour
     float rotX, rotY = 0;
     void Start()
     {
+        Quaternion rotation = transform.rotation;
+        rotation.eulerAngles = new Vector3(40f, -90f, rotation.eulerAngles.z);
+        transform.rotation = rotation;
+
+        Debug.Log("Initial Camera Rotation: " + transform.rotation.eulerAngles);
 
     }
 
