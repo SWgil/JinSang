@@ -1,28 +1,34 @@
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
+using System.Collections;
+using System.Collections.Generic;
+
+[RequireComponent(typeof(BoxCollider))]
 public class Domino : MonoBehaviour
 {
 
     private bool isCollision = false;
     public bool isSelected = false;
-    RaycastHit hit, hitFloor;
-    GameObject dragAnchor;
-    Vector3 mainCameraPos;
+
     GameObject selectedObject;
     private Rigidbody rb;
 
+
     void Awake()
     {
-        mainCameraPos = Camera.main.transform.position;
+        //ver2 mainCameraPos = Camera.main.transform.position;
         rb = GetComponent<Rigidbody>();
     }
 
 
     void Start()
     {
+
+        yHeight = this.transform.localScale.y;
 
     }
 
@@ -63,67 +69,68 @@ public class Domino : MonoBehaviour
             isCollision = false;
     }
 
-
     //TODO
     //도미노 블럭 위치를 드래깅.유니티 기본함수. 함수들을 이해못했으므로 이상하게 동작함 -->변경예정.
 
+    RaycastHit hit, hitLayerMask;
+    GameObject objectHitPosition;
+    float yHeight;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(this.transform.position, this.transform.localRotation * Vector3.up * 3.0f);
+    }
+
+    Vector3 getContactPoint(Vector3 normal, Vector3 planeDot, Vector3 A, Vector3 B)
+    {
+        Vector3 nAB = (B - A).normalized;
+
+        return A + nAB * Vector3.Dot(normal, planeDot - A) / Vector3.Dot(normal, nAB);
+    }
+
     void OnMouseDown()
     {
-        Debug.Log("OnMouseDown");
+        Debug.Log(string.Format("{0} is Down", gameObject.name));
         isSelected = true;
-        //오브젝트에 마우스가 클릭되었을때
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            selectedObject = hit.collider.gameObject;
-            dragAnchor = new GameObject("DragAnchor");
-            dragAnchor.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-            transform.SetParent(dragAnchor.transform);
+            objectHitPosition = new GameObject("Empty");
+            objectHitPosition.transform.position = hit.point;
+            this.transform.SetParent(objectHitPosition.transform);
         }
     }
+
     void OnMouseUp()
     {
-        Debug.Log("OnMouseUp");
-
-        //오브젝트에서 마우스가 떼졌을때
         isSelected = false;
-        transform.SetParent(null);
-        Destroy(dragAnchor);
+        Debug.Log(string.Format("{0} is Up", gameObject.name));
+        this.transform.parent = null;
+        Destroy(objectHitPosition);
     }
+
     void OnMouseDrag()
     {
-        Debug.Log("OnMouseDrag");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * 100.0f, Color.red);
+
+        int layer = 1 << LayerMask.NameToLayer("Ground");
         if (isSelected == true)
         {
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground"))) //LayerMask 를 어떻게 처리해야할지?
+            if (Physics.Raycast(ray, out hitLayerMask, Mathf.Infinity, layer))
             {
-                float h = dragAnchor.transform.position.y;
+                Vector3 normal = hitLayerMask.transform.up;
+                Vector3 planeDot = hitLayerMask.point + hitLayerMask.collider.transform.up * yHeight;
+                Vector3 A = Camera.main.transform.position;
+                Vector3 B = hitLayerMask.point;
 
-                Vector3 camToFloor = hitFloor.point - Camera.main.transform.position;
-                Vector3 nextPosition = Vector3.zero;
-
-                float low = 0.0f, high = 1.0f;
-                for (int i = 0; i < 38; i++)
-                {
-                    float diff = high - low;
-                    float p1 = low + diff / 3;
-                    float p2 = high - diff / 3;
-
-                    Vector3 v1 = mainCameraPos + camToFloor * p1;
-                    Vector3 v2 = mainCameraPos + camToFloor * p2;
-                    if (Mathf.Abs(v1.y - h) > Mathf.Abs(v2.y - h))
-                    {
-                        nextPosition = v2;
-                        low = p1;
-                    }
-                    else
-                    {
-                        nextPosition = v1;
-                        high = p2;
-                    }
-                }
-                dragAnchor.transform.position = nextPosition;
+                this.transform.rotation
+                  = Quaternion.LookRotation(hitLayerMask.collider.transform.forward);
+                objectHitPosition.transform.position = getContactPoint(normal, planeDot, A, B);
+                Debug.Log(string.Format("{0} is Dragging", gameObject.name));
+                Debug.Log(string.Format("ray(mouse) Pos = {0}, {1}, {2}", ray.origin.x, ray.origin.y, ray.origin.z));
+                Debug.Log(string.Format("obj Pos = {0}, {1}, {2}", gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
             }
         }
     }
