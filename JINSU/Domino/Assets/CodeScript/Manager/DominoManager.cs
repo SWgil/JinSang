@@ -4,20 +4,19 @@ using UnityEngine;
 public class DominoManager : MonoBehaviour
 {
     // Singleton, not thread safe
-    public static DominoManager Instance { get; private set; }
-    private void Awake()
+    static DominoManager instance = null;
+    public static DominoManager Instance
     {
-        if (Instance == null)
+        get
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (instance == null)
+            {
+                var obj = new GameObject(typeof(DominoManager).Name);
+                instance = obj.AddComponent<DominoManager>();
+            }
+            return instance;
         }
     }
-
 
 
     public GameObject startingDomino;

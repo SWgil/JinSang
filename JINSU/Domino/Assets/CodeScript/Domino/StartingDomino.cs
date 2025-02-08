@@ -9,7 +9,7 @@ public class StartingDomino : MonoBehaviour
 
     public void Reset()
     {
-        GetComponent<ResetableDomino>().Reset();
         GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<ResetableDomino>().Reset();
     }
 }

@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class ResetableDomino : MonoBehaviour
@@ -13,7 +14,19 @@ public class ResetableDomino : MonoBehaviour
 
     public void Reset()
     {
-        transform.position = originPosition;
-        transform.rotation = originRotation;
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        if (!rb.isKinematic)
+        {
+            rb.position = originPosition;
+            rb.rotation = originRotation;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+        else
+        {
+            transform.position = originPosition;
+            transform.rotation = originRotation;
+        }
     }
 }
