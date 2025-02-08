@@ -25,7 +25,7 @@ public class DominoManager : MonoBehaviour
 
     public void ActivateStartingDomino()
     {
-        startingDomino.GetComponent<Rigidbody>().isKinematic = false;
+        startingDomino.GetComponent<StartingDomino>().Activate();
     }
 
 
@@ -36,18 +36,12 @@ public class DominoManager : MonoBehaviour
 
     public void ResetAllDominoes()
     {
-        ResetStartingDomino();
+        startingDomino.GetComponent<StartingDomino>().Reset();
 
         foreach (GameObject domino in dominoes)
         {
             domino.GetComponent<ResetableDomino>().Reset();
         }
-    }
-
-    private void ResetStartingDomino()
-    {
-        startingDomino.GetComponent<Rigidbody>().isKinematic = true;
-        startingDomino.GetComponent<ResetableDomino>().Reset();
     }
 }
 

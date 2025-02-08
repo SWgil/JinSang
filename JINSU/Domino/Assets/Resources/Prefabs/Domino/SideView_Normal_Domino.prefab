@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8420282757690262233}
   - component: {fileID: -6920142719200405960}
   m_Layer: 0
-  m_Name: SideView_Domino_block
+  m_Name: SideView_Normal_Domino
   m_TagString: Tag_DominoBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
