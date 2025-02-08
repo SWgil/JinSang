@@ -3,15 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class InGameUIManager : MonoBehaviour
 {
-    public GameObject startDomino;
-
     public void StartRound()
     {
-        startDomino.GetComponent<Rigidbody>().isKinematic = false;
+
+        DominoManager dm = FindFirstObjectByType<DominoManager>();
+        dm.ActivateStartingDomino();
     }
 
-    public void ResetRound()
+    public void RestartRound()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ResetAllDominoes()
+    {
+        DominoManager dm = FindFirstObjectByType<DominoManager>();
+        dm.ResetAllDominoes();
     }
 }

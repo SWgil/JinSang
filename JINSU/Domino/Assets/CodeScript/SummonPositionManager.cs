@@ -32,7 +32,9 @@ public class SummonPositionManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && isMousePointingWall())
         {
-            SummonObject();
+            GameObject domino = SummonObject();
+            DominoManager dm = FindFirstObjectByType<DominoManager>();
+            dm.RegisterObject(domino);
         }
     }
 
@@ -64,9 +66,9 @@ public class SummonPositionManager : MonoBehaviour
         }
     }
 
-    private void SummonObject()
+    private GameObject SummonObject()
     {
-        Instantiate(prefab, transform.position, transform.rotation);
+        return Instantiate(prefab, transform.position, transform.rotation);
     }
 
     private bool isMousePointingWall()
