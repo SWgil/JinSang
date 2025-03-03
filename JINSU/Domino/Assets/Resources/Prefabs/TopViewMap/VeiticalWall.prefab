@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4133978931721998455}
   - component: {fileID: 7579004983293097423}
   - component: {fileID: 5456087913129829541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VeiticalWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
