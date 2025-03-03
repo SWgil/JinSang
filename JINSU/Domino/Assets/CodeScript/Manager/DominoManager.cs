@@ -19,14 +19,18 @@ public class DominoManager : MonoBehaviour
     }
 
 
-    public GameObject startingDomino;
+    public GameObject startingDominoPrefab;
     public GameObject dominoPrefab;
     public LayerMask layerMask;
+    public Transform startPotision;
 
     private List<GameObject> dominoes = new List<GameObject>();
+    private GameObject startingDomino;
 
     void Start()
     {
+        startingDomino = Instantiate(startingDominoPrefab, startPotision.transform.position, startPotision.transform.rotation);
+
         GameObject summonPosition = GetSummonPosition();
         summonPosition.GetComponent<SummonPosition>().appendPrefab(dominoPrefab);
     }
@@ -65,6 +69,7 @@ public class DominoManager : MonoBehaviour
     public void RemoveAllDominoes()
     {
         ObjectManager.Call.UnregisterAllObject(dominoPrefab.name);
+        dominoes.Clear();
     }
 
     private GameObject GetSummonPosition()
