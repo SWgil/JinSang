@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class StartingDomino : MonoBehaviour
 {
+    private float torquePower = 1f;
+    private Vector3 torqueAxis = new Vector3(1, 0, 0);
+
     public void Activate()
     {
-        GetComponent<Rigidbody>().isKinematic = false;
+        Rigidbody rigidBody = GetComponent<Rigidbody>();
+        rigidBody.AddTorque(torqueAxis * torquePower, ForceMode.Impulse);
     }
 
     public void Reset()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ResetableDomino>().Reset();
     }
 }
