@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &20923495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3792267815904233258, guid: 805aee9d7fed69048bf82996ecba00aa, type: 3}
+  m_PrefabInstance: {fileID: 8901833241159577270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &183478359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -823,6 +828,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &2011105016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2414059026564877735, guid: 805aee9d7fed69048bf82996ecba00aa, type: 3}
+  m_PrefabInstance: {fileID: 8901833241159577270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2017002297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1250,6 +1260,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3792267815904233258, guid: 805aee9d7fed69048bf82996ecba00aa, type: 3}
+      propertyPath: m_Name
+      value: ButtonCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 7750135219028975666, guid: 805aee9d7fed69048bf82996ecba00aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -1294,6 +1308,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameUIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8209555674751841182, guid: 805aee9d7fed69048bf82996ecba00aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323267924590727481, guid: 805aee9d7fed69048bf82996ecba00aa, type: 3}
+      propertyPath: menuCanvas
+      value: 
+      objectReference: {fileID: 20923495}
+    - target: {fileID: 8323267924590727481, guid: 805aee9d7fed69048bf82996ecba00aa, type: 3}
+      propertyPath: ButtonCanvas
+      value: 
+      objectReference: {fileID: 2011105016}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
