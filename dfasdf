@@ -1,0 +1,206 @@
+[33mcommit de04d671160c194d3bb364ac25f1986e7bc92f9f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mJINSU_Branch[m[33m)[m
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Feb 8 09:11:04 2025 +0900
+
+    chore 소스병합을 위한 코드 정리
+    
+    소스병합을 위한 코드 정리
+
+[33mcommit cafa24dbe99bc8b13eb264a57ee6eb10aa4a84c4[m
+Merge: f20acdb f87b7b7
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Wed Jan 29 17:04:21 2025 +0900
+
+    Merge branch 'JINSU_Branch' of https://github.com/SWgil/JinSang into JINSU_Branch
+
+[33mcommit f87b7b76665672fddee137fb7463d8ffa4eb64ca[m
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Jan 25 16:45:07 2025 +0900
+
+    chore 도미노생성코드 원상복구 및 시네마틱패키지추가
+    
+    좌클릭 도미노생성코드 원상복구 및 시네마틱패키지추가
+
+[33mcommit c68ed42bda19153310afac970cbefca1ea72f8eb[m
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Jan 25 16:24:46 2025 +0900
+
+    feat. 카메라 이동,회전기능 추가
+    
+    wasd 전진 후진 우측, 좌측 이동
+    qezc 좌,우,상,하 시점 변경
+    maincamera.cs는 당분간 사용X(코드만 추가)
+    기존의 chasingcamera.cs로 적용
+
+[33mcommit 26b36a0a0b72bc67c3ee0b8f117042bec3daf396[m
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sun Jan 19 00:49:47 2025 +0900
+
+    Update JINSU/Domino/Assets/CodeScript/ObjectManager.cs
+    
+    Co-authored-by: SWgil <153619205+SWgil@users.noreply.github.com>
+
+[33mcommit 50ced69e78df112fbc8c26c0419c992b5d559cfd[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sun Jan 12 21:35:20 2025 +0900
+
+    feat 도미노속성 변경(유니티) 및 코드 추가
+    
+    1.좌클로 도미노생성, 우클로 보이지않는 총알 생성 k로 충돌 구현
+    2. 도미노 이동은 아직안되지만, 코드상으론 추가했음(코드 내용이 이해가안감)
+
+[33mcommit ad8265c0aba346a20db66963f3c3c6eea8eb51f0[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sun Jan 12 14:33:48 2025 +0900
+
+    feat. 도미노 클릭생성,오브젝트매니저,크리에이터,게임매니저 코드 추가
+    
+    1.씬에 등록하는 objectCreator 스크립트를 통해서
+    마우스를 클릭하는 경우: 충돌감지를 통해 해당위치에 도미노생성
+    2.object생성 및 관리하는 objectmanager 스크립트 수정
+    2.게임매니저 코드에서 게임진행관련(시간기능,유저정보저장) 기능 추가(적용여부는 미확인,UI와 붙일때 확인가능할듯)
+
+[33mcommit ce2c2d0e147eeaa3188ec71014db4389e0dc02ac[m
+Author: SWgil <153619205+SWgil@users.noreply.github.com>
+Date:   Sun Jan 12 22:07:17 2025 +0900
+
+    chore: UserSettings 폴더를 .gitignore에 추가
+
+[33mcommit f20acdbb1674c4c189f3a3e4253c303bd8b1ce79[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sun Jan 12 21:35:20 2025 +0900
+
+    feat 도미노속성 변경(유니티) 및 코드 추가
+    
+    1.좌클로 도미노생성, 우클로 보이지않는 총알 생성 k로 충돌 구현
+    2. 도미노 이동은 아직안되지만, 코드상으론 추가했음(코드 내용이 이해가안감)
+
+[33mcommit 841032b35c91acf188cf920c56d5dd592f78dbd3[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sun Jan 12 14:33:48 2025 +0900
+
+    feat. 도미노 클릭생성,오브젝트매니저,크리에이터,게임매니저 코드 추가
+    
+    1.씬에 등록하는 objectCreator 스크립트를 통해서
+    마우스를 클릭하는 경우: 충돌감지를 통해 해당위치에 도미노생성
+    2.object생성 및 관리하는 objectmanager 스크립트 수정
+    2.게임매니저 코드에서 게임진행관련(시간기능,유저정보저장) 기능 추가(적용여부는 미확인,UI와 붙일때 확인가능할듯)
+
+[33mcommit 3767cb462aa8bd0f7c9e15075ca73bf55c10bc44[m
+Author: SWgil <153619205+SWgil@users.noreply.github.com>
+Date:   Sat Jan 11 21:14:55 2025 +0900
+
+    chore: make simple map scene and prefabs
+
+[33mcommit 00229d52b37e26741fe1433f66b959b54cd462df[m
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Jan 4 17:28:24 2025 +0900
+
+    chore vscode 개발환경으로변경 및 커멘트에 따른 변경
+    
+    1.unity 기본 생성 주석 삭제
+    2.샘플씬 삭제
+    3.vscode로 변경하면서 이슈로 적은 개발환경으로 셋팅
+
+[33mcommit c671fccf6b07cd86e0bfd05111e7e812a95ac284[m
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Jan 4 16:17:16 2025 +0900
+
+    feat 카메라 코드 추가
+    
+    도미노를 따라다니는 카메라를 위한 코드 추가(지금은 테스트용)
+
+[33mcommit 67dcb4ee128f47e962047aa2a802f630c490f693[m
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Jan 4 16:16:28 2025 +0900
+
+    feat 게임용 매니저들 추가 및 도미노 충돌 구현
+    
+    1.GameManager, ObjectManager(빈코드), EffectManager(빈코드)로 추가
+    2.도미노 및 공 생성으로 충돌 구현
+    하였습니다.
+
+[33mcommit 70c527d57a1a065eafc8b9c8fabe7648546e704d[m
+Merge: 705a7b0 4756d72
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Fri Jan 3 20:09:40 2025 +0900
+
+    Merge pull request #6 from SWgil/JINSU_Branch
+    
+    첫 프로젝트 시작
+
+[33mcommit 4756d7228af7e043c1250d731bfa9a00567d25d9[m
+Merge: 766d17f 705a7b0
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Dec 28 19:59:49 2024 +0900
+
+    Merge branch 'main' into JINSU_Branch
+
+[33mcommit 766d17f77eb4fb23b69d78546ceb5386abdb543f[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 19:57:22 2024 +0900
+
+    chore : 폴더명 변경 및 rebase, gitignore 이슈 정리
+    
+    유니티에서 프로젝트를 열기 위해 필요한 파일들(이하 3줄)이 있다면, 나머지 코드는 자동생성하므로 저장소에 포함할 필요가 없음.
+    Assets 폴더
+    ProjectSettings 폴더
+    Packages 폴더와 관련 manifest 파일들
+
+[33mcommit db4595ec9866baa4c2c2c61465d8c9427383b856[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 18:27:37 2024 +0900
+
+    init : unity3D init Project 생성 2
+    
+    unity 3D version (Unity 엔진 기본제공 프로젝트) 업로드.
+    1..gitignore 추가했습니다.
+    2.마스터랑 conflict나서 재업로드(마스터랑 재확인 필요합니다.)
+    3.README파일이 PC local에선 롤백나서 재업로드
+
+[33mcommit b2246fc6f705d35a6cde81b89085c86e7a8281c1[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 17:31:46 2024 +0900
+
+    init : unity3D init Project 생성
+    
+    unity3D project (유니티 기본제공) 생성 후 업로드
+
+[33mcommit 705a7b00e085e4afbebf4cdc68b15c7c0e7eb9c4[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 16:08:45 2024 +0900
+
+    chore : 진짜 readme 생성
+
+[33mcommit 36981aac0f45cc665fd037ec0b294bb743e0196f[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 16:08:45 2024 +0900
+
+    chore : 진짜 readme 생성
+
+[33mcommit efc896e87305ca15b782b53dde436f167a63c56c[m
+Merge: 834542f e0ebaf5
+Author: jinsu421 <jinsu421@users.noreply.github.com>
+Date:   Sat Dec 28 15:52:21 2024 +0900
+
+    Merge pull request #1 from SWgil/JINSU_Branch
+    
+    test : 브랜치생성 후 PR테스트 2번째 하래서 함
+
+[33mcommit e0ebaf57476e853ef420949448b63bad16978638[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 15:43:54 2024 +0900
+
+    test : 코드 수정 테스트
+
+[33mcommit cf85d2912eb8730d9982857af4ae5caefd45e0ca[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 15:33:07 2024 +0900
+
+    test : 브랜치생성 후 PR테스트
+
+[33mcommit 834542f9d7113771af128b3595b59353092662dd[m
+Author: jinsu421 <jinsu0286@daum.net>
+Date:   Sat Dec 28 15:28:57 2024 +0900
+
+    Create readme-jin.txt
