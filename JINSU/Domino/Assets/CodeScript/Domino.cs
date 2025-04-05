@@ -1,7 +1,7 @@
+using TMPro;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
+
 
 
 [RequireComponent(typeof(BoxCollider))]
@@ -13,9 +13,12 @@ public class Domino : MonoBehaviour
     private Rigidbody rb;
 
 
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
     }
 
 
@@ -23,6 +26,7 @@ public class Domino : MonoBehaviour
     {
 
         yHeight = this.transform.localScale.y;
+
 
     }
 
@@ -40,6 +44,12 @@ public class Domino : MonoBehaviour
 
         }
 
+        //TODO : 특정 도미노가 선택되면 우클사용으로 UI 메뉴를 띄움.
+        //메뉴와 도미노가 호환되도록 코드를 구현
+        if (Input.GetMouseButtonDown(1))
+        {
+
+        }
 
     }
 

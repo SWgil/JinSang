@@ -176,4 +176,6 @@ public class GameManager : MonoBehaviour
         }
         totalPlayTime += PlayerPrefs.GetFloat("surviveTime");
     }
+
+
 }
