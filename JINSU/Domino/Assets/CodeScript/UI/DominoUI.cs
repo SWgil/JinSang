@@ -27,7 +27,7 @@ public class DominoUI : MonoBehaviour
         if (circularMenu == null)
         {
             circularMenu = CreateCircularMenu();
-            //동일 버튼이 만들어지는버그
+            //ToDo : 동일 버튼이 만들어지는버그를 수정해야함.
             AddButtonsToCircularMenu(circularMenu, buttonActions);
         }
     }
@@ -140,9 +140,6 @@ public class DominoUI : MonoBehaviour
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvasObject.AddComponent<CanvasScaler>();
             canvasObject.AddComponent<GraphicRaycaster>();
-
-
-
         }
     }
     void ToggleCircularMenu()
