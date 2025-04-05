@@ -17,6 +17,7 @@ public class InvisibleBall : MonoBehaviour
 
         if (Input.GetKey(KeyCode.K))
         {
+            ObjectCreator.CreateObjectAtMousePosition("InvisibleBall");
             GetComponent<Rigidbody>().AddForce(speed * -1.5f, 0, 0, ForceMode.Impulse);
         }
 

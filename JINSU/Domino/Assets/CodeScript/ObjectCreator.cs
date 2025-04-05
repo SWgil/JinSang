@@ -6,7 +6,7 @@ public class ObjectCreator : MonoBehaviour
 {
 
 
-    private ObjectManager objectManager;
+    private static ObjectManager objectManager;
 
     //public으로 변경후 단일씬에 하나씩 스크립트를 gameobject형태로 넣는것을 추천하긴함.
     //책임분리와 유연성이 있다고하며, 동적생성의 이점을 상실하는 이유
@@ -63,7 +63,7 @@ public class ObjectCreator : MonoBehaviour
         return newObject;
     }
 
-    private void CreateObjectAtMousePosition(string objName)
+    public static void CreateObjectAtMousePosition(string objName)
     {
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -96,13 +96,13 @@ public class ObjectCreator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) //왼클릭으로 생성 -->동작하는중
         {
-            // CreateObjectAtMousePosition("Domino");
+            CreateObjectAtMousePosition("Domino");
 
         }
 
         if (Input.GetMouseButtonDown(1)) //우클릭으로 생성 -->동작하는중
         {
-            CreateObjectAtMousePosition("InvisibleBall");
+            //   CreateObjectAtMousePosition("InvisibleBall");
         }
 
     }
