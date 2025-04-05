@@ -27,7 +27,8 @@ public class DominoUI : MonoBehaviour
         if (circularMenu == null)
         {
             circularMenu = CreateCircularMenu();
-            //ToDo : 동일 버튼이 만들어지는버그를 수정해야함.
+            //ToDo : 동일 버튼이 만들어지는버그를 수정해야함. 
+            //UI를 띄우는 동작에서, 인스펙터에 동일 오브젝트가 중복 생성
             AddButtonsToCircularMenu(circularMenu, buttonActions);
         }
     }
