@@ -152,37 +152,8 @@ public class ObjectManager : MonoBehaviour
 
     void Update()
     {
-        // CheckSelectedDomino();
+
     }
 
-    GameObject CheckSelectedDomino() //몇번째 도미노인지 체크가능하게끔
-    {
-        GameObject selectedObject = null;
-        RaycastHit hitInfo;
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                if (hitInfo.collider != null)
-                {
-                    GameObject hitObject = hitInfo.collider.gameObject;
-                    if (objectPool.Count > 0)
-                    {
-                        foreach (KeyValuePair<string, GameObject> obj in objectPool)
-                        {
-                            if (obj.Key == "Domino")
-                            {
-                                selectedObject = obj.Value;
-                                Debug.Log(string.Format("{0} is selected !", selectedObject.name));
 
-                                return selectedObject;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return selectedObject;
-    }
 }
